@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Phone } from "lucide-react";
 
-function Login() {
+function Buylog() {
   const navigate = useNavigate();
 
   return (
@@ -44,4 +44,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Buylog;

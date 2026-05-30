@@ -1,27 +1,32 @@
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import Feed from './pages/Feed'
+import Buylog from './pages/Buylog'
+import Login from './pages/Login'
+import BottomNavBar from './components/BottomNavBar'
+import './App.css'
 
-import { Routes, Route } from "react-router-dom";
+function Layout() {
+  const location = useLocation()
+  const hideNav = location.pathname === '/'
 
-import Home from "./pages/Home";
-import Record from "./pages/Record";
-import Today from "./pages/Today";
-import Report from "./pages/Report";
-import Diary from "./pages/Diary";
-import Analyze from "./pages/Analyze";
-import Result from "./pages/Result";
+  return (
+    <div className="app-layout">
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/feed" element={<Feed />} />
+        <Route path="/buylog" element={<Buylog />} />
+      </Routes>
+      {!hideNav && <BottomNavBar />}
+    </div>
+  )
+}
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/record" element={<Record />} />
-      <Route path="/today" element={<Today />} />
-      <Route path="/report" element={<Report />} />
-      <Route path="/diary" element={<Diary />} />
-      <Route path="/analyze" element={<Analyze />} />
-      <Route path="/result" element={<Result />} />
-    </Routes>
-  );
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
+  )
 }
 
 export default App;

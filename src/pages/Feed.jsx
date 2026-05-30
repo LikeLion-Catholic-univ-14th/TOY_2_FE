@@ -14,13 +14,11 @@ function Feed() {
     useEffect(() => {
         fetchWithGuest('http://localhost:8080/api/spendings/todays')
             .then(res => res.json())
-            .then(data => {
-                setTotalAmount(data.totalAmount)
-            })
+            .then(data => setTotalAmount(data.data.totalAmount))
 
         fetchWithGuest('http://localhost:8080/api/report')
             .then(res => res.json())
-            .then(data => setReport(data))
+            .then(data => setReport(data.data))
     }, [])
 
     return (

@@ -1,13 +1,16 @@
+import { useNavigate } from 'react-router-dom'
 import HomeIcon from '../assets/Home.svg'
 import AddIcon from '../assets/Add.svg'
 import MatchesIcon from '../assets/Matches.svg'
 import CalendarIcon from '../assets/uil_calender.svg'
 import IconIcon from '../assets/Icon.svg'
 
-function BottomNavBar({ active }) {
+function BottomNavBar() {
+    const navigate = useNavigate()
+
     return (
         <nav style={{
-            position: 'fixed',
+            position: 'absolute',
             bottom: '20px',
             left: '50%',
             transform: 'translateX(-50%)',
@@ -22,9 +25,9 @@ function BottomNavBar({ active }) {
             width: '327px',
             padding: '8px',
         }}>
-            <img src={HomeIcon} width={62} height={48} />
-            <img src={IconIcon} width={24} height={24} />
-            <img src={AddIcon} width={62} height={48} />
+            <img src={HomeIcon} width={62} height={48} style={{ cursor: 'pointer' }} onClick={() => navigate('/')} />
+            <img src={IconIcon} width={24} height={24} style={{ cursor: 'pointer' }} onClick={() => navigate('/feed')} />
+            <img src={AddIcon} width={62} height={48} style={{ cursor: 'pointer' }} onClick={() => navigate('/buylog')} />
             <img src={CalendarIcon} width={24} height={24} />
             <img src={MatchesIcon} width={62} height={48} />
         </nav>

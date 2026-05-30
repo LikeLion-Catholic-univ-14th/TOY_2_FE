@@ -2,16 +2,21 @@ import React, { useRef } from 'react';
 import './PhotoUploadArea.css';
 import CameraIcon from '../../assets/cameraIcon.svg';
 
-function PhotoUploadArea({ onImageSelect, preview }) {
+function PhotoUploadArea({ onImageSelect, preview, activeTab }) {
     const fileInputRef = useRef(null)
 
     const handleClick = () => {
-        fileInputRef.current.click()  // 파일 선택창 열기
+        if (activeTab === 'camera') {
+            fileInputRef.current.setAttribute('capture', 'environment')
+        } else {
+            fileInputRef.current.removeAttribute('capture')
+        }
+        fileInputRef.current.click()
     }
 
     const handleChange = (e) => {
         const file = e.target.files[0]
-        if (file) onImageSelect(file)  // 부모에게 파일 전달
+        if (file) onImageSelect(file)
     }
 
     return (
@@ -38,4 +43,4 @@ function PhotoUploadArea({ onImageSelect, preview }) {
     )
 }
 
-export default PhotoUploadArea;
+export default PhotoUploadArea

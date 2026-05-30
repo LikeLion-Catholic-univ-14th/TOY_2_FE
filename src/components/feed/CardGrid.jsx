@@ -10,7 +10,7 @@ function CardGrid() {
     useEffect(() => {
         fetchWithGuest('http://localhost:8080/api/spendings/todays')
             .then(res => res.json())
-            .then(data => setSpendings(data.spendings))
+            .then(data => setSpendings(data.data.spendings))
     }, [])
 
     return (

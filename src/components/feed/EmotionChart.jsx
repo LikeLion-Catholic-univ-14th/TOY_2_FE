@@ -5,7 +5,7 @@ const COLORS = ['#E79EA2', '#EFCE77', '#A3C690']
 
 function EmotionChart({ report }) {
     const data = report
-        ? Object.values(report.satisfactionRatio).map(value => ({ value }))
+        ? Object.entries(report.byEmotion).map(([name, val]) => ({ name, value: val.count }))
         : [{ value: 50 }, { value: 30 }, { value: 20 }]
 
     return (

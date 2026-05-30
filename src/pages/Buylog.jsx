@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Phone } from "lucide-react";
+import './Buylog.css'
 
 function Buylog() {
   const navigate = useNavigate();
